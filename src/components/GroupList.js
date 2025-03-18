@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from "react";
 import groupService from "../services/groupService";
-import userService from "../services/userService";
-
 import expenseService from "../services/expenseService";
 import { FaEdit, FaTrash, FaUserMinus } from "react-icons/fa";
+import { Modal, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
+import { useNavigate } from "react-router-dom";
 
 const GroupList = () => {
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState(""); // "delete" or "removeUser"
+  const [selectedGroupId, setSelectedGroupId] = useState(null);
+  const [selectedUserId, setSelectedUserId] = useState(null);
+  const navigate = useNavigate();
   useEffect(() => {
     const loadGroupData = async () => {
       try {
         const groupData = await groupService.fetchGroups();
         console.log("Groups:", groupData);
-
-        const userData = await userService.fetchUsers();
-        console.log("Users:", userData);
 
         const expenseDataArray = await Promise.all(
           groupData.map(async (group) => {
@@ -31,16 +32,9 @@ const GroupList = () => {
           })
         );
 
-        console.log("Expense Data Array:", expenseDataArray);
-
         const enrichedGroups = groupData.map((group, index) => {
-          console.log(`Raw Group Data for ${group.name}:`, group);
-
           const groupExpenses = expenseDataArray[index] || [];
-
           const groupMembers = group.members || [];
-          console.log(`Processed Members for ${group.name}:`, groupMembers);
-
           const totalExpense = groupExpenses.reduce(
             (sum, exp) => sum + (exp.amount || 0),
             0
@@ -59,7 +53,6 @@ const GroupList = () => {
           };
         });
 
-        console.log("Enriched Groups:", enrichedGroups);
         setGroups(enrichedGroups);
         setLoading(false);
       } catch (error) {
@@ -72,19 +65,55 @@ const GroupList = () => {
     loadGroupData();
   }, []);
 
-  const handleDeleteGroup = async (groupId) => {
-    if (window.confirm("Are you sure you want to delete this group?")) {
+  const handleDeleteGroup = async () => {
+    if (selectedGroupId) {
       try {
-        await groupService.deleteGroup(groupId);
-        setGroups(groups.filter((group) => group.id !== groupId));
+        await groupService.deleteGroup(selectedGroupId);
+        setGroups(groups.filter((group) => group.id !== selectedGroupId));
+        setShowModal(false);
       } catch (error) {
         setError("Failed to delete group");
       }
     }
   };
 
-  const handleRemoveUser = (groupId, userId) => {
-    alert(`Remove user ${userId} from group ${groupId} - Implement API call`);
+  const handleRemoveUser = async () => {
+    if (selectedGroupId && selectedUserId) {
+      try {
+        await groupService.removeUserFromGroup(selectedGroupId, selectedUserId);
+
+        // Update UI after removal
+        setGroups((prevGroups) =>
+          prevGroups.map((group) => {
+            if (group.id === selectedGroupId) {
+              const updatedMembers = group.members.filter(
+                (user) => user.id !== selectedUserId
+              );
+
+              // Recalculate split expenses after user removal
+              const totalExpense = group.totalExpense;
+              const newSplitExpenses = updatedMembers.map((member) => ({
+                name: member.name,
+                amountOwed: (
+                  totalExpense / (updatedMembers.length || 1)
+                ).toFixed(2),
+              }));
+
+              return {
+                ...group,
+                members: updatedMembers,
+                splitExpenses: newSplitExpenses, // ✅ Update split expense calculation
+              };
+            }
+            return group;
+          })
+        );
+
+        setShowModal(false);
+      } catch (error) {
+        setError("Failed to remove user from group");
+      }
+    }
   };
 
   return (
@@ -122,14 +151,24 @@ const GroupList = () => {
                       {group.members.map((user) => (
                         <li key={user.id} className="group-member">
                           {user.name}{" "}
-                          <FaUserMinus
-                            className="remove-user-icon"
-                            onClick={() => handleRemoveUser(group.id, user.id)}
-                          />
+                          {/* ✅ Hide the remove icon for the logged-in user */}
+                          {user.id !==
+                            JSON.parse(localStorage.getItem("user"))?.id && (
+                            <FaUserMinus
+                              className="remove-user-icon"
+                              onClick={() => {
+                                setSelectedGroupId(group.id);
+                                setSelectedUserId(user.id);
+                                setModalType("removeUser");
+                                setShowModal(true);
+                              }}
+                            />
+                          )}
                         </li>
                       ))}
                     </ul>
                   </td>
+
                   <td>${group.totalExpense.toFixed(2)}</td>
                   <td>
                     <ul className="split-expense-list">
@@ -141,10 +180,17 @@ const GroupList = () => {
                     </ul>
                   </td>
                   <td>
-                    <FaEdit className="edit-icon" />
+                    <FaEdit
+                      className="edit-icon"
+                      onClick={() => navigate(`/edit-group/${group.id}`)} // ✅ Pass groupId
+                    />
                     <FaTrash
                       className="delete-icon"
-                      onClick={() => handleDeleteGroup(group.id)}
+                      onClick={() => {
+                        setSelectedGroupId(group.id);
+                        setModalType("delete");
+                        setShowModal(true);
+                      }}
                     />
                   </td>
                 </tr>
@@ -153,6 +199,33 @@ const GroupList = () => {
           </table>
         </div>
       )}
+
+      {/* Bootstrap Modal for both Delete Group & Remove User */}
+      <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            {modalType === "delete" ? "Confirm Delete" : "Remove User"}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {modalType === "delete"
+            ? "Are you sure you want to delete this group?"
+            : "Are you sure you want to remove this user from the group?"}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Cancel
+          </Button>
+          <Button
+            variant={modalType === "delete" ? "danger" : "warning"}
+            onClick={
+              modalType === "delete" ? handleDeleteGroup : handleRemoveUser
+            }
+          >
+            {modalType === "delete" ? "Delete" : "Remove"}
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

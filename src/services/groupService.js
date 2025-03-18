@@ -89,13 +89,22 @@ const getGroupById = async (groupId) => {
     return {};
   }
 };
+const removeUserFromGroup = async (groupId, userId) => {
+  try {
+    await axiosInstance.delete(`/${groupId}/removeUser/${userId}`);
+    return true; // Return true if the request is successful
+  } catch (error) {
+    console.error("Error removing user from group:", error);
+    throw error;
+  }
+};
 
-// ✅ Correctly Export the Functions in an Object
 const groupService = {
   fetchGroups,
   createGroup,
   deleteGroup,
   updateGroup,
+  removeUserFromGroup,
   getUserGroups,
   getGroupById,
 };

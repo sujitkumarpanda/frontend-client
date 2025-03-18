@@ -26,6 +26,8 @@ function App() {
           <Route path="/create-group" element={<CreateGroup />} />
           <Route path="/view-group" element={<GroupList />} />
           <Route path="/add-expense" element={<AddExpense />} />
+          <Route path="/group-list" element={<GroupList />} />
+          <Route path="/edit-group/:groupId" element={<CreateGroup />} />
         </Route>
       </Routes>
     </>
