@@ -1,0 +1,507 @@
+body,
+html {
+  background-color: #e2edfb;
+  color: #131111;
+  font-family: Arial, sans-serif;
+  padding-top: 50px;
+}
+
+.navbar {
+  background-color: #5e63bf !important;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: white !important;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ddd !important;
+}
+
+/* Button Styling */
+.btn-custom {
+  background-color: #ffffff !important;
+  border-color: #5e63bf !important;
+  color: #5e63bf !important;
+}
+.btn-custom-logout {
+  background-color: #ffffff !important;
+  border-color: #5e63bf !important;
+  color: #5e63bf !important;
+}
+
+.btn-custom-login {
+  background-color: #5e63bf !important;
+  border-color: #5e63bf !important;
+  color: #f8f6fa !important;
+  width: 40%;
+}
+
+.btn-custom-signup {
+  background-color: #5e63bf !important;
+  border-color: #5e63bf !important;
+  color: #f8f6fa !important;
+  width: 40%;
+}
+
+.btn-custom:hover {
+  background-color: #5e63bf !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+.btn-custom-logout:hover {
+  background-color: #f93333 !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+.btn-custom-login:hover {
+  background-color: #ffffff !important;
+  border-color: #5e63bf !important;
+  color: #5e63bf !important;
+}
+.btn-custom-creategroup {
+  background-color: #5e63bf !important;
+  border-color: #5e63bf !important;
+  color: #f8f6fa !important;
+  width: 20%;
+}
+.btn-custom-creategroup:hover {
+  background-color: #ffffff !important;
+  border-color: #5e63bf !important;
+  color: #5e63bf !important;
+}
+
+/* Dropdown Styling */
+.dropdown-menu {
+  background-color: white !important;
+  border: 1px solid #5e63bf;
+}
+
+.dropdown-custom {
+  color: #5e63bf !important;
+}
+
+.dropdown-custom:hover {
+  background-color: #5e63bf !important;
+  color: white !important;
+}
+
+/* User Login & Signup Styling */
+.user-login,
+.user-signup {
+  color: #5e63bf !important;
+  font-weight: bolder;
+}
+
+.login-form-container,
+.signup-form-container {
+  border: 1px solid #ddd; /* Light border */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px;
+  background-color: #fff; /* White background */
+}
+
+.signup-form-container {
+  border-radius: 10px;
+}
+
+/* Styling for Sign Up Link */
+.signup-link {
+  color: #5e63bf;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+/* Table Styling */
+.table thead {
+  background-color: #5e63bf !important;
+  color: white !important;
+}
+
+.table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Table & Container Styling */
+.tbl-emp-contaner {
+  width: 100% !important;
+  margin: auto;
+  padding: 5px !important;
+}
+
+/* .table-responsive, .table {
+  width: 100% !important;
+  max-width: 100% !important;
+} */
+
+.full-width-container {
+  width: 100% !important;
+}
+
+/* Align Employee List heading to the left */
+.page-header {
+  text-align: left !important;
+  font-weight: bold !important;
+  color: #5e63bf !important;
+  margin-left: 0 !important;
+  padding-top: 5px;
+}
+
+/* Create Employee Component Styling */
+.create-employee-container {
+  max-width: 100%;
+  padding: 2rem;
+}
+
+.create-employee-header {
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: #5e63bf; /* Muted Purple */
+  font-weight: bold;
+}
+
+.create-employee-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #333;
+}
+
+.form-control {
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.form-control:focus {
+  border-color: #5e63bf;
+  box-shadow: 0px 0px 5px #515389;
+}
+
+/* Submit Button */
+.btn-submit {
+  background-color: #5e63bf !important;
+  color: white !important;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  transition: 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #5e63bf !important; /* Darker shade on hover */
+}
+
+/* Button Outline Styles */
+.btn-outline-primary,
+.btn-outline-danger {
+  border-color: #5e63bf !important;
+  color: #5e63bf !important;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-danger:hover {
+  background-color: #5e63bf !important;
+  color: white !important;
+}
+
+/* Icon Styling */
+.btn svg {
+  vertical-align: middle;
+  margin-bottom: 2px;
+}
+/* Dashboard Container */
+.dashboard-container {
+  margin-top: 20px;
+  padding: 20px;
+}
+
+/* Titles */
+.dashboard-title {
+  text-align: center;
+  color: #5e63bf;
+  font-weight: bold;
+}
+
+.dashboard-subtitle {
+  text-align: center;
+  color: #6c757d;
+  margin-bottom: 30px;
+}
+
+/* Summary Section */
+.summary-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary-card {
+  background: #5e63bf;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.negative-balance {
+  color: rgb(255, 69, 69);
+  font-weight: bold;
+}
+
+.positive-balance {
+  color: green;
+  font-weight: bold;
+}
+
+/* Recent Expenses */
+.section-title {
+  margin-top: 30px;
+  color: #5e63bf;
+}
+
+.expenses-table th {
+  background: #5e63bf;
+  color: white;
+}
+
+.expenses-table td {
+  text-align: center;
+}
+
+/* My Groups */
+.group-card {
+  background: #f1f3f5;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid #5e63bf;
+}
+
+/* Who Owes Who */
+.balances-table th {
+  background: #5e63bf;
+  color: white;
+}
+
+.balances-table td {
+  text-align: center;
+}
+
+.create-group-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.create-group-heading {
+  color: #5e63bf;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Form Inputs */
+.custom-input {
+  border: 2px solid #5e63bf;
+  border-radius: 8px;
+  padding: 10px;
+}
+.create-group-container {
+  max-width: 1500px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.create-group-heading {
+  color: #5e63bf;
+  font-weight: bold;
+}
+
+.create-group-form {
+  width: 100%;
+}
+
+.custom-input {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #5e63bf;
+  padding: 10px;
+}
+
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.user-button {
+  padding: 5px 10px;
+  border: 1px solid #5e63bf;
+  border-radius: 5px;
+  background: none;
+  color: #5e63bf;
+  cursor: pointer;
+}
+
+.user-button:hover {
+  background: #5e63bf;
+  color: white;
+}
+
+.selected-users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.selected-user {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  background: #5e63bf;
+  color: white;
+  border-radius: 5px;
+}
+
+.remove-icon {
+  cursor: pointer;
+  color: white;
+}
+
+.group-list-container {
+  margin-top: 20px;
+  max-width: 1500px;
+}
+
+.group-list-heading {
+  color: #5e63bf;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.group-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-header {
+  background-color: #5e63bf;
+  color: white;
+  text-align: left;
+}
+
+.group-table th,
+.group-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.group-members-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.group-member {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f8f9fa;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.edit-icon,
+.delete-icon {
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.edit-icon {
+  color: #ffc107;
+}
+
+.delete-icon {
+  color: #dc3545;
+}
+
+.delete-icon:hover {
+  color: #b02a37;
+}
+
+.remove-user-icon {
+  cursor: pointer;
+  color: #dc3545;
+  margin-left: 8px;
+}
+
+.remove-user-icon:hover {
+  color: #b02a37;
+}
+/* Add Expense Form Custom Styling */
+.expense-form-container {
+  background-color: #ffffff;
+  border: 2px solid #5e63bf;
+  border-radius: 8px;
+  padding: 20px;
+}
+.expense-container {
+  max-width: 1500px;
+  padding: 20px;
+}
+
+.expense-title {
+  color: #5e63bf;
+  font-weight: bold;
+}
+
+.btn-custom-expense {
+  background-color: #5e63bf !important;
+  border-color: #5e63bf !important;
+  color: white !important;
+}
+
+.btn-custom-expense:hover {
+  background-color: #f1f1f6 !important;
+  color: #5e63bf !important;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.text-danger {
+  font-size: 0.9rem;
+}
