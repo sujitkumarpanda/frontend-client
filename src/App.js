@@ -9,6 +9,7 @@ import AddExpense from "./components/ExpenseForm";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import CreateGroup from "./components/GroupForm";
+import SettlePayment from "./components/SettlePayment";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/add-expense" element={<AddExpense />} />
           <Route path="/group-list" element={<GroupList />} />
           <Route path="/edit-group/:groupId" element={<CreateGroup />} />
+          <Route path="/settle-payment" element={<SettlePayment />} />
         </Route>
       </Routes>
     </>

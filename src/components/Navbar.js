@@ -129,15 +129,12 @@ const Navbar = () => {
                           Add Expense
                         </Link>
                       </li>
-                      <li>
-                        <Link
-                          className="dropdown-item dropdown-custom"
-                          to="/split-e"
-                        >
-                          Split Expense
-                        </Link>
-                      </li>
                     </ul>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link custom-link" to="/settle-payment">
+                      Settle Payments
+                    </Link>
                   </li>
                   <li className="nav-item">
                     <button
