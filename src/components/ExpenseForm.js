@@ -26,7 +26,7 @@ const AddExpense = () => {
       try {
         const allGroups = await groupService.getUserGroups(user.id);
         const filteredGroups = allGroups.filter(
-          (group) => group.members.some((member) => member.id === user.id) // ✅ Only groups where user is a member
+          (group) => group.members.some((member) => member.id === user.id) // ✅ Only groups where user as a member
         );
         setGroups(filteredGroups);
       } catch (error) {

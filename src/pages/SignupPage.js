@@ -171,7 +171,7 @@ const Signup = () => {
                   <Row className="text-center mt-3">
                     <Col>
                       Already have an account?{" "}
-                      <Link to="/" className="signup-link">
+                      <Link to="/login" className="signup-link">
                         Login
                       </Link>
                     </Col>
