@@ -14,11 +14,13 @@ import {
 import expenseService from "../services/expenseService";
 import groupService from "../services/groupService";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 
 const AddExpense = () => {
   const [groups, setGroups] = useState([]);
   const [alert, setAlert] = useState({ type: "", message: "" });
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate;
   const user = JSON.parse(localStorage.getItem("user")) || {}; // Fetch logged-in user
 
   useEffect(() => {
@@ -57,6 +59,7 @@ const AddExpense = () => {
       await expenseService.createExpense(values);
       setAlert({ type: "success", message: "Expense added successfully!" });
       resetForm();
+      navigate("/group-list");
     } catch (error) {
       setAlert({
         type: "danger",

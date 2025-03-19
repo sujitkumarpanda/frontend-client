@@ -74,7 +74,9 @@ const SettlePayment = () => {
               type: "success",
               text: "Payment settled successfully!",
             });
-            setTimeout(() => navigate("/dashboard"), 2000);
+            // ✅ Force group data reload in GroupList after payment
+            localStorage.setItem("refreshGroups", "true");
+            setTimeout(() => navigate("/group-list"), 2000);
           } catch (error) {
             setMessage({
               type: "danger",

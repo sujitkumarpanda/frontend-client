@@ -62,7 +62,13 @@ const GroupList = () => {
       }
     };
 
-    loadGroupData();
+    // ✅ Detect if payment was settled and refresh data
+    if (localStorage.getItem("refreshGroups") === "true") {
+      loadGroupData();
+      localStorage.removeItem("refreshGroups"); // Clear flag after refresh
+    } else {
+      loadGroupData();
+    }
   }, []);
 
   const handleDeleteGroup = async () => {

@@ -505,3 +505,68 @@ html {
 .text-danger {
   font-size: 0.9rem;
 }
+/* Container Styling */
+.settle-payment-container {
+  max-width: 1500px;
+  margin: 50px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styling */
+.settle-payment-heading {
+  font-size: 24px;
+  font-weight: bold;
+  color: #5e63bf; /* Custom primary color */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+.settle-payment-form .form-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.custom-input {
+  border: 2px solid #5e63bf;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.custom-input:focus {
+  border-color: #3e44a0; /* Darker shade on focus */
+  box-shadow: 0px 0px 5px rgba(94, 99, 191, 0.5);
+}
+
+/* Button Styling */
+.btn-custom-settle {
+  background-color: #5e63bf;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.btn-custom-settle:hover {
+  background-color: #4b51a5;
+}
+
+/* Error Message Styling */
+.text-danger {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Spinner for Loading */
+.spinner-border-sm {
+  width: 15px;
+  height: 15px;
+}

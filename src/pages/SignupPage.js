@@ -40,7 +40,7 @@ const Signup = () => {
 
       setTimeout(() => {
         resetForm();
-        navigate("/"); // Redirect to login after 2 seconds
+        navigate("/login"); // Redirect to login after 2 seconds
       }, 2000);
     } catch (error) {
       console.error("Signup Error:", error);

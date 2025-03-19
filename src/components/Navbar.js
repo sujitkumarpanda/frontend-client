@@ -133,7 +133,7 @@ const Navbar = () => {
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link custom-link" to="/settle-payment">
-                      Settle Payments
+                      SettlePayments
                     </Link>
                   </li>
                   <li className="nav-item">
